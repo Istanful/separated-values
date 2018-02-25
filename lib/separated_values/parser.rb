@@ -5,7 +5,7 @@ module SeparatedValues
   class Parser
     attr_reader :file_path, :options
 
-    def initialize(file_path, options = {})
+    def initialize(file_path, options = DEFAULT_OPTIONS)
       @file_path = file_path
       @options = options
     end

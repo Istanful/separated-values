@@ -2,7 +2,7 @@ module SeparatedValues
   class Row
     attr_reader :options
 
-    def initialize(values, options = {})
+    def initialize(values, options = DEFAULT_OPTIONS)
       @values = values
       @options = options
     end

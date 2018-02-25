@@ -4,7 +4,7 @@ module SeparatedValues
   class RowParser
     attr_reader :source_data, :options
 
-    def initialize(source_data, options = { separator: ';' })
+    def initialize(source_data, options = DEFAULT_OPTIONS)
       @source_data = source_data
       @options = options
     end
