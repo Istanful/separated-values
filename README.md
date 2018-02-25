@@ -32,7 +32,7 @@ of the file. You can access the cell values as a two dimensional array.
 document[0][0] = 'foo'
 ```
 
-The parser will default to parseCSV files.
+The parser will default to parse CSV files.
 If you want to parse a custom format you can use the `:separator` option.
 ```ruby
 document = SeparatedValues.parse('my_file.tsv', separator: '\t')
@@ -42,10 +42,18 @@ The parser also comes with the handy `:schema` option.
 By providing this option you can convert the document to an array of hashes:
 ```ruby
 document = SeparatedValues.parse('my_file.csv', schema: [:first_name, :last_name])
-document.to_hash_array = [
-    { first_name: 'Luke', last_name: 'Skywalker' },
-    { first_name: 'Han', last_name: 'Solo' }
-]
+document.to_hash_array
+#=>
+# [
+#     { first_name: 'Luke', last_name: 'Skywalker' },
+#     { first_name: 'Han', last_name: 'Solo' }
+# ]
+```
+
+The keys defined in the schema will also be available as methods:
+```ruby
+document = SeparatedValues.parse('my_file.csv', schema: [:first_name, :last_name])
+document[0].first_name = 'Luke'
 ```
 
 ## Development
