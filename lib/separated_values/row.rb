@@ -16,5 +16,14 @@ module SeparatedValues
         hash[key] = @values[i]
       end
     end
+
+    def method_missing(name, *args, &block)
+      return to_h[name] if respond_to_missing?(name, *args)
+      super
+    end
+
+    def respond_to_missing?(name, *args)
+      !!options[:schema] && options[:schema].include?(name)
+    end
   end
 end
